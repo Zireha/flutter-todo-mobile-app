@@ -29,7 +29,7 @@ class _ActionChoiceExampleState extends State<ActionChoiceExample> {
             spacing: 11.0,
             children: List<Widget>.generate(
               4,
-              (int index) {
+                  (int index) {
                 final List<String> labels = [
                   'Semua',
                   'Tinggi',
@@ -45,7 +45,7 @@ class _ActionChoiceExampleState extends State<ActionChoiceExample> {
 
                 return ChoiceChip(
                   padding:
-                      const EdgeInsets.symmetric(horizontal: 20, vertical: 4),
+                  const EdgeInsets.symmetric(horizontal: 16, vertical: 4),
                   showCheckmark: false,
                   chipAnimationStyle: ChipAnimationStyle(
                       enableAnimation: AnimationStyle(

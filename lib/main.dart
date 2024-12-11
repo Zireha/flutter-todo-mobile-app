@@ -1,8 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:todoapp/data/db_service/db_service.dart';
 
 import 'ui/home_screen.dart';
 
-void main() {
+void main() async {
+
+  WidgetsFlutterBinding.ensureInitialized();
+  await DBService.instance.initDB();
+  await DBService.instance.initializeTask();
+
   runApp(const MyApp());
 }
 
