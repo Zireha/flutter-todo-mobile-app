@@ -55,12 +55,17 @@ class DBService {
     return await db.delete('todo', where: 'id = ?', whereArgs: [id]);
   }
 
+  Future<List<Map<String, dynamic>>> getTaskByPriority(int? priority) async {
+    Database db = await instance.db;
+    return await db.query('todo', where: 'priority = ?', whereArgs: [priority]);
+  }
+
   Future<void> initializeTask() async {
     List<Todo> taskToAdd = [
       Todo(id: 1, taskTitle: "Masak Aer", taskDescription: "Biar Mateng", endDate: "10-12-2024", endTime: "16:00", priority: 1, isCompleted: false ? 1 : 0),
       Todo(id: 2, taskTitle: "Belanja Makan", taskDescription: "Belanja jajan", endDate: "11-12-2024", endTime: "12:00", priority: 3, isCompleted: true ? 1 : 0),
       Todo(id: 3, taskTitle: "Tugas Kuliah", taskDescription: "Kerjain PR", endDate: "13-12-2024", endTime: "11:00", priority: 1, isCompleted: false ? 1 : 0),
-      Todo(id: 4, taskTitle: "Nyantai", taskDescription: "Gada sih hehe", endDate: "14-12-2024", endTime: "08:00", priority: 1, isCompleted: true ? 1 : 0),
+      Todo(id: 4, taskTitle: "Nyantai", taskDescription: "Gada sih hehe", endDate: "14-12-2024", endTime: "08:00", priority: 2, isCompleted: true ? 1 : 0),
     ];
 
     for(Todo todo in taskToAdd) {

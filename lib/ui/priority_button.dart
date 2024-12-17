@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:todoapp/data/db_service/db_service.dart';
 
 class PriorityButton extends StatelessWidget {
   const PriorityButton({super.key});
@@ -17,7 +18,7 @@ class ActionChoiceExample extends StatefulWidget {
 }
 
 class _ActionChoiceExampleState extends State<ActionChoiceExample> {
-  int? _value = 1;
+  int? _value = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -29,7 +30,7 @@ class _ActionChoiceExampleState extends State<ActionChoiceExample> {
             spacing: 11.0,
             children: List<Widget>.generate(
               4,
-                  (int index) {
+              (int index) {
                 final List<String> labels = [
                   'Semua',
                   'Tinggi',
@@ -45,7 +46,7 @@ class _ActionChoiceExampleState extends State<ActionChoiceExample> {
 
                 return ChoiceChip(
                   padding:
-                  const EdgeInsets.symmetric(horizontal: 16, vertical: 4),
+                      const EdgeInsets.symmetric(horizontal: 16, vertical: 4),
                   showCheckmark: false,
                   chipAnimationStyle: ChipAnimationStyle(
                       enableAnimation: AnimationStyle(
