@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:todoapp/data/db_service/db_service.dart';
 
 class PriorityButton extends StatelessWidget {
   const PriorityButton({super.key});

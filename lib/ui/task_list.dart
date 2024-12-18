@@ -1,35 +1,44 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-
 import '../data/db_service/db_service.dart';
 import '../data/model/todo.dart';
 
-class TaskList extends StatefulWidget {
-  final int? priorityValue;
+class PriorityValue {
+  final String value;
 
-  const TaskList({super.key, this.priorityValue});
+  PriorityValue({required this.value});
+}
+
+class TaskList extends StatefulWidget {
+
+  const TaskList({super.key});
 
   @override
-  _TaskListState createState() => _TaskListState();
+  State<TaskList> createState() => _TaskListState();
 }
 
 class _TaskListState extends State<TaskList> {
+
+  late PriorityValue value;
+
   List<Todo> _todo = [];
 
   @override
   void initState() {
+
     super.initState();
+    value = PriorityValue(value: "high");
+
     _fetchTask();
   }
 
   Future<void> _fetchTask() async {
-    final taskMaps = await DBService.instance.queryAll();
+    final taskMaps = await DBService.instance.getTaskByPriority(1);
 
-    setState(() {
+    return setState(() {
       _todo = taskMaps.map((taskMap) => Todo.fromMap(taskMap)).toList();
     });
   }
-
 
   @override
   Widget build(BuildContext context) {
@@ -124,12 +133,10 @@ class _TaskListState extends State<TaskList> {
 }
 
 Color getColor(index) {
-  List<Todo> todo = [];
-
   if (index == 1) {
     return const Color(0xFFFE5F55);
   } else if (index == 2) {
-    return const Color(0xFFEAD42F);
+    return const Color(0xFFF69D0B);
   } else if (index == 3) {
     return const Color(0xFF75D829);
   }
